@@ -5,5 +5,4 @@ plugins {
 }
 
 dependencies {
-    compile(project(":api"))
 }

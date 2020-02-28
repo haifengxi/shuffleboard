@@ -11,8 +11,12 @@ import groovy.lang.GroovyObject
 
 buildscript {
     repositories {
-        mavenCentral()
-        jcenter()
+        maven {
+            setUrl("https://maven.aliyun.com/repository/central/")
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/jcenter/")
+        }
     }
 }
 plugins {
@@ -37,7 +41,9 @@ if (hasProperty("releaseMode")) {
 
 allprojects {
     repositories {
-        mavenCentral()
+        maven {
+            setUrl("https://maven.aliyun.com/repository/central/")
+        }
     }
     if (hasProperty("releaseMode")) {
         rootProject.wpilibRepositories.addAllReleaseRepositories(project)
@@ -153,7 +159,9 @@ allprojects {
         plugin("maven-publish")
     }
     repositories {
-        mavenCentral()
+        maven {
+            setUrl("https://maven.aliyun.com/repository/central/")
+        }
     }
 
     createNativeConfigurations()

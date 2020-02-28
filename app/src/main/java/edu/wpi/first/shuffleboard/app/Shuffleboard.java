@@ -14,6 +14,7 @@ import edu.wpi.first.shuffleboard.plugin.cameraserver.CameraServerPlugin;
 import edu.wpi.first.shuffleboard.plugin.networktables.NetworkTablesPlugin;
 
 import com.google.common.base.Stopwatch;
+import com.team6941.shuffleboard.SimplePointWidgetPlugin;
 
 import it.sauronsoftware.junique.AlreadyLockedException;
 import it.sauronsoftware.junique.JUnique;
@@ -82,6 +83,10 @@ public class Shuffleboard extends Application {
     PluginLoader.getDefault().load(new NetworkTablesPlugin());
     notifyPreloader(new ShuffleboardPreloader.StateNotification("Loading CameraServer plugin", 0.375));
     PluginLoader.getDefault().load(new CameraServerPlugin());
+
+    notifyPreloader(new ShuffleboardPreloader.StateNotification("Loading user plugins", 0.50));
+    PluginLoader.getDefault().load(new SimplePointWidgetPlugin());
+    
     notifyPreloader(new ShuffleboardPreloader.StateNotification("Loading custom plugins", 0.625));
     PluginLoader.getDefault().loadAllJarsFromDir(Storage.getPluginPath());
     notifyPreloader(new ShuffleboardPreloader.StateNotification("Loading custom plugins", 0.75));
